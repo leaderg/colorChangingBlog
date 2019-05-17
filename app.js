@@ -9,7 +9,7 @@ const multer  = require('multer');
 
 var storage = multer.diskStorage(
     {
-        destination: './uploads',
+        destination: './public/uploads',
         filename: function ( req, file, cb ) {
             //req.body is empty...
             //How could I get the new_file_name property sent from client here?
@@ -31,6 +31,6 @@ app.get('/', (req, res) => {
 })
 
 app.post("/upload", upload.single('image'), function (req, res, next) {
-  console.log(req.file);
+  vibrant.from("./public/uploads/img").getPalette((err, palette) => console.log(palette))
   res.send('<a href="/">Go back</a>');
 })
